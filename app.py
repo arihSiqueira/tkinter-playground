@@ -21,13 +21,15 @@ class SeaofBTCapp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-
+        
+        #aqui inicializa as outras janelas que sero usadas e guarda a referencia dentro de um dicionario de 'janelas'
         for F in (StartPage, PageOne, PageTwo):
 
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
-
+    
+        #de fato mostra a janela
         self.show_frame(StartPage)
 
     def show_frame(self, cont):
@@ -37,8 +39,6 @@ class SeaofBTCapp(tk.Tk):
 
     def teste(self):
         print ('oi')
-
-        
 
         
 
