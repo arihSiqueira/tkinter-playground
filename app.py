@@ -20,13 +20,15 @@ class SeaofBTCapp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-
+        
+        #aqui inicializa as outras janelas que sero usadas e guarda a referencia dentro de um dicionario de 'janelas'
         for F in (StartPage, PageOne, PageTwo):
 
             frame = F(container, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky="nsew")
-
+    
+        #de fato mostra a janela
         self.show_frame(StartPage)
 
     def show_frame(self, cont):
@@ -43,6 +45,7 @@ class StartPage(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self,parent)
 
+        #testando o uso de imagem
         logo = tk.PhotoImage(file='/home/usuario/Documentos/python/app/teste.png')
         
         label = ttk.Label(self, text="Start Page", font=LARGE_FONT,image=logo)
@@ -72,6 +75,9 @@ class PageOne(tk.Frame):
         
         label.pack(pady=10,padx=10)
 
+        #um dos modos de abrir outra janela é chamando a funço com lambda,
+        #a variavel controller possui referencia ao objeto principal  que nesse caso é SeaofBTCapp, então ele chama as funçes existentes de 
+        #dentro dessa classe passando a classe como referencia, que representa um frame (no caso a janela)
         button1 = ttk.Button(self, text="Back to Home",
                             command=lambda: controller.show_frame(StartPage))
         button1.pack()
